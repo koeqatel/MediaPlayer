@@ -37,3 +37,9 @@ C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\In
 C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csproj.ResolveComReference.cache
 C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.exe
 C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.pdb
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\bin\Debug\SnS Mediaplayer.exe
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\bin\Debug\SnS Mediaplayer.pdb
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csprojResolveAssemblyReference.cache
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Properties.Resources.resources
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csproj.GenerateResource.Cache
+C:\Users\Sander\Desktop\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Player.resources
