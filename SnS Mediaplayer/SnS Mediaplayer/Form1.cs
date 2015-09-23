@@ -25,6 +25,8 @@ namespace SnS_Mediaplayer
             wplayer.controls.play();
             File = File.Replace(".mp3", "");
             MusicList.Text = File;
+            Console.WriteLine("Kipsaté");
+
         }
     }
 }
