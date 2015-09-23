@@ -16,7 +16,6 @@ namespace SnS_Mediaplayer
     {
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
-        // Displays an OpenFileDialog so the user can select a Cursor.
         OpenFileDialog openFileDialog1 = new OpenFileDialog();
         
     public Player()
@@ -26,9 +25,11 @@ namespace SnS_Mediaplayer
 
         private void Playbutton_Click(object sender, EventArgs e)
         {
-            wplayer.URL = openFileDialog1.FileName; ;
+            wplayer.URL = TrackList.SelectedText;
             wplayer.controls.play();
-            string DisplayName = openFileDialog1.FileName.Replace(".mp3", "");
+            string DisplayName = TrackList.SelectedText.Replace(".mp3", "");
+            // Hier moet de Folder worden gereplaced met niks
+            DisplayName = TrackList.SelectedText.Replace("", "");
             InfoList.Text = DisplayName;
         }
 
@@ -37,13 +38,10 @@ namespace SnS_Mediaplayer
             openFileDialog1.Filter = "Media Files|*.mp3";
             openFileDialog1.Title = "Select a Media File";
 
-            // Show the Dialog.
-            // If the user clicked OK in the dialog and
-            // a .CUR file was selected, open it.
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
             }
-
+            TrackList.Items.Add(openFileDialog1.FileName);
             //            BrowserDialog.ShowDialog();
             //            FileTextbox.Text = BrowserDialog.SelectedPath;
             //            string[] filePaths = Directory.GetFiles(BrowserDialog.SelectedPath);
@@ -53,6 +51,21 @@ namespace SnS_Mediaplayer
             //                Name = Name.Replace("\\", "");
             //                TrackList.Text = TrackList.Text + Name + "\n";
             //            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.pause();
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.stop();
+        }
+
+        private void TrackList_DragDrop(object sender, DragEventArgs e)
+        {
+            TrackList.Items.Add(sender);
         }
     }
 }
