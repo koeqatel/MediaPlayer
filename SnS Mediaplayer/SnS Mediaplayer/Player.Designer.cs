@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Player));
             this.InfoList = new System.Windows.Forms.RichTextBox();
             this.Playbutton = new System.Windows.Forms.PictureBox();
@@ -36,6 +37,8 @@
             this.TrackList = new System.Windows.Forms.ComboBox();
             this.StopButton = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Playbutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).BeginInit();
@@ -75,14 +78,14 @@
             // PauseButton
             // 
             this.PauseButton.BackColor = System.Drawing.SystemColors.Control;
+            this.PauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PauseButton.BackgroundImage")));
             this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PauseButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PauseButton.Location = new System.Drawing.Point(98, 72);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(80, 80);
             this.PauseButton.TabIndex = 7;
             this.PauseButton.TabStop = false;
-            this.PauseButton.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
             // TrackList
             // 
@@ -100,6 +103,7 @@
             // StopButton
             // 
             this.StopButton.BackColor = System.Drawing.SystemColors.Control;
+            this.StopButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("StopButton.BackgroundImage")));
             this.StopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.StopButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StopButton.Location = new System.Drawing.Point(184, 72);
@@ -119,11 +123,26 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(93, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "label1";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 334);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.TrackList);
@@ -138,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,6 +170,8 @@
         private System.Windows.Forms.ComboBox TrackList;
         private System.Windows.Forms.PictureBox StopButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
