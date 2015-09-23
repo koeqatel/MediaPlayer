@@ -32,9 +32,8 @@
             this.InfoList = new System.Windows.Forms.RichTextBox();
             this.Playbutton = new System.Windows.Forms.PictureBox();
             this.BrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.TrackList = new System.Windows.Forms.RichTextBox();
             this.FileButton = new System.Windows.Forms.Button();
-            this.FileTextbox = new System.Windows.Forms.RichTextBox();
+            this.TrackList = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.Playbutton)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,15 +57,6 @@
             this.Playbutton.TabStop = false;
             this.Playbutton.Click += new System.EventHandler(this.Playbutton_Click);
             // 
-            // TrackList
-            // 
-            this.TrackList.Location = new System.Drawing.Point(388, 12);
-            this.TrackList.Name = "TrackList";
-            this.TrackList.Size = new System.Drawing.Size(278, 140);
-            this.TrackList.TabIndex = 3;
-            this.TrackList.Text = "";
-            this.TrackList.WordWrap = false;
-            // 
             // FileButton
             // 
             this.FileButton.Location = new System.Drawing.Point(12, 12);
@@ -77,26 +67,23 @@
             this.FileButton.UseVisualStyleBackColor = true;
             this.FileButton.Click += new System.EventHandler(this.FileButton_Click);
             // 
-            // FileTextbox
+            // TrackList
             // 
-            this.FileTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FileTextbox.Location = new System.Drawing.Point(93, 14);
-            this.FileTextbox.Multiline = false;
-            this.FileTextbox.Name = "FileTextbox";
-            this.FileTextbox.ReadOnly = true;
-            this.FileTextbox.Size = new System.Drawing.Size(288, 20);
-            this.FileTextbox.TabIndex = 5;
-            this.FileTextbox.Text = "No file selected";
-            this.FileTextbox.WordWrap = false;
+            this.TrackList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.TrackList.Location = new System.Drawing.Point(432, 12);
+            this.TrackList.Name = "TrackList";
+            this.TrackList.Size = new System.Drawing.Size(233, 140);
+            this.TrackList.TabIndex = 6;
+            this.TrackList.TabStop = false;
+            this.TrackList.Text = "Files";
             // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 334);
-            this.Controls.Add(this.FileTextbox);
-            this.Controls.Add(this.FileButton);
             this.Controls.Add(this.TrackList);
+            this.Controls.Add(this.FileButton);
             this.Controls.Add(this.Playbutton);
             this.Controls.Add(this.InfoList);
             this.Name = "Player";
@@ -111,9 +98,8 @@
         private System.Windows.Forms.RichTextBox InfoList;
         private System.Windows.Forms.PictureBox Playbutton;
         private System.Windows.Forms.FolderBrowserDialog BrowserDialog;
-        private System.Windows.Forms.RichTextBox TrackList;
         private System.Windows.Forms.Button FileButton;
-        private System.Windows.Forms.RichTextBox FileTextbox;
+        private System.Windows.Forms.GroupBox TrackList;
     }
 }
 

@@ -16,27 +16,43 @@ namespace SnS_Mediaplayer
     {
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
-        public Player()
+        // Displays an OpenFileDialog so the user can select a Cursor.
+        OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        
+    public Player()
         {
             InitializeComponent();
         }
+
         private void Playbutton_Click(object sender, EventArgs e)
         {
-            wplayer.URL = BrowserDialog.SelectedPath;
+            wplayer.URL = openFileDialog1.FileName; ;
             wplayer.controls.play();
-            string DisplayName = BrowserDialog.SelectedPath.Replace(".mp3", "");
+            string DisplayName = openFileDialog1.FileName.Replace(".mp3", "");
             InfoList.Text = DisplayName;
         }
 
         private void FileButton_Click(object sender, EventArgs e)
         {
-            BrowserDialog.ShowDialog();
-            FileTextbox.Text = BrowserDialog.SelectedPath;
-            string[] filePaths = Directory.GetFiles(BrowserDialog.SelectedPath);
-            foreach (string Track in filePaths)
+            openFileDialog1.Filter = "Media Files|*.mp3";
+            openFileDialog1.Title = "Select a Media File";
+
+            // Show the Dialog.
+            // If the user clicked OK in the dialog and
+            // a .CUR file was selected, open it.
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                TrackList.Text = TrackList.Text + Track + "\n";
             }
+
+            //            BrowserDialog.ShowDialog();
+            //            FileTextbox.Text = BrowserDialog.SelectedPath;
+            //            string[] filePaths = Directory.GetFiles(BrowserDialog.SelectedPath);
+            //            foreach (string Track in filePaths)
+            //            {
+            //                string Name = Track.Replace(BrowserDialog.SelectedPath, "");
+            //                Name = Name.Replace("\\", "");
+            //                TrackList.Text = TrackList.Text + Name + "\n";
+            //            }
         }
     }
 }
