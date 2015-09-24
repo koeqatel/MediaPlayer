@@ -14,10 +14,11 @@ namespace SnS_Mediaplayer
 {
     public partial class Player : Form
     {
-        // We moeten nog ff uitzoeken hoe we File en Folder van eklaar af halen.
+        // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
         string FilePath = null;
         string FolderPath = null;
         string DisplayName;
+         
 
 
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
@@ -55,11 +56,10 @@ namespace SnS_Mediaplayer
 //                      als er in filedialog op "OK" is geklikt...
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                DisplayName = TrackList.SelectedText.Replace(".mp3", "");
-//              Hier Moet Folderpath nog weg
-                InfoList.Text = DisplayName;
 //              Hiervan moeten we alleen filepath laten zien, maar hij moet wel refereren naar folder + file.
                 TrackList.Items.Add(openFileDialog1.FileName);
+                FileInfo fi = new FileInfo(openFileDialog1.FileName);
+                long numberOfBytes = fi.Length;
             }
         }
 
@@ -71,6 +71,51 @@ namespace SnS_Mediaplayer
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = wplayer.status;
+        }
+
+        private void TrackList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void PauseButton_MouseHover(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            PauseButtonPulse.Visible = true;
+            PauseButton.Visible = false;
+        }
+
+        private void PauseButtonPulse_MouseLeave(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            PauseButton.Visible = true;
+            PauseButtonPulse.Visible = false;
+        }
+
+        private void StopButtonPulse_MouseLeave(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            StopButton.Visible = true;
+            StopButtonPulse.Visible = false;
+        }
+        private void StopButton_MouseHover(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            StopButtonPulse.Visible = true;
+            StopButton.Visible = false;
+        }
+
+        private void PlayButtonPulse_MouseLeave(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            PlayButton.Visible = true;
+            PlayButtonPulse.Visible = false;
+        }
+
+        private void PlayButton_MouseHover(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(120);
+            PlayButtonPulse.Visible = true;
+            PlayButton.Visible = false;
         }
     }
 }
