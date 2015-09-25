@@ -72,7 +72,7 @@
             this.PlayButton.TabIndex = 2;
             this.PlayButton.TabStop = false;
             this.PlayButton.Click += new System.EventHandler(this.Playbutton_Click);
-            this.PlayButton.MouseHover += new System.EventHandler(this.PlayButton_MouseHover);
+            this.PlayButton.MouseEnter += new System.EventHandler(this.PlayButton_MouseHover);
             // 
             // FileButton
             // 
@@ -96,7 +96,7 @@
             this.PauseButton.TabIndex = 7;
             this.PauseButton.TabStop = false;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
-            this.PauseButton.MouseHover += new System.EventHandler(this.PauseButton_MouseHover);
+            this.PauseButton.MouseEnter += new System.EventHandler(this.PauseButton_MouseHover);
             // 
             // TrackList
             // 
@@ -122,7 +122,7 @@
             this.StopButton.TabIndex = 9;
             this.StopButton.TabStop = false;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
-            this.StopButton.MouseHover += new System.EventHandler(this.StopButton_MouseHover);
+            this.StopButton.MouseEnter += new System.EventHandler(this.StopButton_MouseHover);
             // 
             // pictureBox1
             // 
@@ -139,9 +139,8 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(93, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 11;
-            this.label1.Text = "label1";
             // 
             // timer1
             // 
@@ -177,6 +176,7 @@
             this.PauseButtonPulse.TabIndex = 14;
             this.PauseButtonPulse.TabStop = false;
             this.PauseButtonPulse.Visible = false;
+            this.PauseButtonPulse.Click += new System.EventHandler(this.PauseButton_Click);
             this.PauseButtonPulse.MouseLeave += new System.EventHandler(this.PauseButtonPulse_MouseLeave);
             // 
             // StopButtonPulse
@@ -188,6 +188,7 @@
             this.StopButtonPulse.TabIndex = 15;
             this.StopButtonPulse.TabStop = false;
             this.StopButtonPulse.Visible = false;
+            this.StopButtonPulse.Click += new System.EventHandler(this.StopButton_Click);
             this.StopButtonPulse.MouseLeave += new System.EventHandler(this.StopButtonPulse_MouseLeave);
             // 
             // PlayButtonPulse
@@ -199,6 +200,7 @@
             this.PlayButtonPulse.TabIndex = 16;
             this.PlayButtonPulse.TabStop = false;
             this.PlayButtonPulse.Visible = false;
+            this.PlayButtonPulse.Click += new System.EventHandler(this.Playbutton_Click);
             this.PlayButtonPulse.MouseLeave += new System.EventHandler(this.PlayButtonPulse_MouseLeave);
             // 
             // Player
@@ -219,6 +221,8 @@
             this.Controls.Add(this.FileButton);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.InfoList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Player";
             this.Text = "S&S Media Player";
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).EndInit();

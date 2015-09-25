@@ -22,7 +22,6 @@ namespace SnS_Mediaplayer
 
 
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
-
         OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
         public Player()
@@ -35,12 +34,12 @@ namespace SnS_Mediaplayer
         {
             wplayer.URL = FolderPath + TrackList.SelectedText;
             wplayer.controls.play();
+            label1.Text = "Now playing: " + openFileDialog1;
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
         {
-
-                wplayer.controls.pause();
+            wplayer.controls.pause();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -58,8 +57,7 @@ namespace SnS_Mediaplayer
             {
 //              Hiervan moeten we alleen filepath laten zien, maar hij moet wel refereren naar folder + file.
                 TrackList.Items.Add(openFileDialog1.FileName);
-                FileInfo fi = new FileInfo(openFileDialog1.FileName);
-                long numberOfBytes = fi.Length;
+
             }
         }
 
@@ -70,7 +68,7 @@ namespace SnS_Mediaplayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = wplayer.status;
+            //label1.Text = wplayer.status;
         }
 
         private void TrackList_SelectedIndexChanged(object sender, EventArgs e)
