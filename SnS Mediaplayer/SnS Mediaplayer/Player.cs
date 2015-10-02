@@ -15,14 +15,9 @@ namespace SnS_Mediaplayer
     public partial class Player : Form
     {
         // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
-        string FilePath = null;
-        string FolderPath = null;
         string DisplayName;
-         
-
 
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
-        OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
         public Player()
         {
@@ -32,9 +27,9 @@ namespace SnS_Mediaplayer
 
         private void Playbutton_Click(object sender, EventArgs e)
         {
-            wplayer.URL = FolderPath + TrackList.SelectedText;
+            wplayer.URL = FileDialog.FolderPath + TrackList.SelectedText;
             wplayer.controls.play();
-            label1.Text = "Now playing: " + openFileDialog1;
+            label1.Text = "Now playing: " + "Null";
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
@@ -49,15 +44,8 @@ namespace SnS_Mediaplayer
         
         private void FileButton_Click(object sender, EventArgs e)
         {
-//          Laat alleen mp3's zien, moet nog kijken naar wav, ogg, enz. die doen het nog niet
-            openFileDialog1.Filter = "Media Files|*.mp3";
-            openFileDialog1.Title = "Select a Media File";
-//                      als er in filedialog op "OK" is geklikt...
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-//              Hiervan moeten we alleen filepath laten zien, maar hij moet wel refereren naar folder + file.
-                TrackList.Items.Add(openFileDialog1.FileName);
-            }
+            FileDialog Test = new FileDialog();
+            Test.Show();
         }
 
         private void TrackList_DragDrop(object sender, DragEventArgs e)

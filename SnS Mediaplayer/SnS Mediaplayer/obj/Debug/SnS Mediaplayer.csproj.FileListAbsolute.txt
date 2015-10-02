@@ -73,3 +73,4 @@ C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplaye
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Player.resources
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Properties.Resources.resources
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csproj.GenerateResource.Cache
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.FileDialog.resources
