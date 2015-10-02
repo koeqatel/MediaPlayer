@@ -57,7 +57,6 @@ namespace SnS_Mediaplayer
             {
 //              Hiervan moeten we alleen filepath laten zien, maar hij moet wel refereren naar folder + file.
                 TrackList.Items.Add(openFileDialog1.FileName);
-
             }
         }
 
@@ -68,52 +67,37 @@ namespace SnS_Mediaplayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //label1.Text = wplayer.status;
+            label1.Text = wplayer.status;
         }
 
-        private void TrackList_SelectedIndexChanged(object sender, EventArgs e)
+        private void PlayButton_MouseEnter(object sender, EventArgs e)
+        {
+            PlayButton.Image = Image.FromFile("..\\Textures\\Play Pulse.gif");
+        }
+
+        private void PlayButton_MouseLeave(object sender, EventArgs e)
         {
 
         }
-        private void PauseButton_MouseHover(object sender, EventArgs e)
+
+        private void StopButton_MouseEnter(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(120);
-            PauseButtonPulse.Visible = true;
-            PauseButton.Visible = false;
+
         }
 
-        private void PauseButtonPulse_MouseLeave(object sender, EventArgs e)
+        private void StopButton_MouseLeave(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(120);
-            PauseButton.Visible = true;
-            PauseButtonPulse.Visible = false;
+
         }
 
-        private void StopButtonPulse_MouseLeave(object sender, EventArgs e)
+        private void PauseButton_MouseLeave(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(120);
-            StopButton.Visible = true;
-            StopButtonPulse.Visible = false;
-        }
-        private void StopButton_MouseHover(object sender, EventArgs e)
-        {
-            System.Threading.Thread.Sleep(120);
-            StopButtonPulse.Visible = true;
-            StopButton.Visible = false;
+
         }
 
-        private void PlayButtonPulse_MouseLeave(object sender, EventArgs e)
+        private void PauseButton_MouseEnter(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(120);
-            PlayButton.Visible = true;
-            PlayButtonPulse.Visible = false;
-        }
 
-        private void PlayButton_MouseHover(object sender, EventArgs e)
-        {
-            System.Threading.Thread.Sleep(120);
-            PlayButtonPulse.Visible = true;
-            PlayButton.Visible = false;
         }
     }
 }

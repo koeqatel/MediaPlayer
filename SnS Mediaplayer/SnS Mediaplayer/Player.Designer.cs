@@ -72,7 +72,8 @@
             this.PlayButton.TabIndex = 2;
             this.PlayButton.TabStop = false;
             this.PlayButton.Click += new System.EventHandler(this.Playbutton_Click);
-            this.PlayButton.MouseEnter += new System.EventHandler(this.PlayButton_MouseHover);
+            this.PlayButton.MouseEnter += new System.EventHandler(this.PlayButton_MouseEnter);
+            this.PlayButton.MouseLeave += new System.EventHandler(this.PlayButton_MouseLeave);
             // 
             // FileButton
             // 
@@ -96,7 +97,8 @@
             this.PauseButton.TabIndex = 7;
             this.PauseButton.TabStop = false;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
-            this.PauseButton.MouseEnter += new System.EventHandler(this.PauseButton_MouseHover);
+            this.PauseButton.MouseEnter += new System.EventHandler(this.PauseButton_MouseEnter);
+            this.PauseButton.MouseLeave += new System.EventHandler(this.PauseButton_MouseLeave);
             // 
             // TrackList
             // 
@@ -122,7 +124,8 @@
             this.StopButton.TabIndex = 9;
             this.StopButton.TabStop = false;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
-            this.StopButton.MouseEnter += new System.EventHandler(this.StopButton_MouseHover);
+            this.StopButton.MouseEnter += new System.EventHandler(this.StopButton_MouseEnter);
+            this.StopButton.MouseLeave += new System.EventHandler(this.StopButton_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -169,39 +172,33 @@
             // PauseButtonPulse
             // 
             this.PauseButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("PauseButtonPulse.Image")));
-            this.PauseButtonPulse.Location = new System.Drawing.Point(570, 13);
+            this.PauseButtonPulse.Location = new System.Drawing.Point(50, 106);
             this.PauseButtonPulse.Name = "PauseButtonPulse";
             this.PauseButtonPulse.Size = new System.Drawing.Size(40, 40);
             this.PauseButtonPulse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PauseButtonPulse.TabIndex = 14;
             this.PauseButtonPulse.TabStop = false;
             this.PauseButtonPulse.Visible = false;
-            this.PauseButtonPulse.Click += new System.EventHandler(this.PauseButton_Click);
-            this.PauseButtonPulse.MouseLeave += new System.EventHandler(this.PauseButtonPulse_MouseLeave);
             // 
             // StopButtonPulse
             // 
             this.StopButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("StopButtonPulse.Image")));
-            this.StopButtonPulse.Location = new System.Drawing.Point(524, 13);
+            this.StopButtonPulse.Location = new System.Drawing.Point(4, 106);
             this.StopButtonPulse.Name = "StopButtonPulse";
             this.StopButtonPulse.Size = new System.Drawing.Size(40, 40);
             this.StopButtonPulse.TabIndex = 15;
             this.StopButtonPulse.TabStop = false;
             this.StopButtonPulse.Visible = false;
-            this.StopButtonPulse.Click += new System.EventHandler(this.StopButton_Click);
-            this.StopButtonPulse.MouseLeave += new System.EventHandler(this.StopButtonPulse_MouseLeave);
             // 
             // PlayButtonPulse
             // 
             this.PlayButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("PlayButtonPulse.Image")));
-            this.PlayButtonPulse.Location = new System.Drawing.Point(616, 13);
+            this.PlayButtonPulse.Location = new System.Drawing.Point(96, 106);
             this.PlayButtonPulse.Name = "PlayButtonPulse";
             this.PlayButtonPulse.Size = new System.Drawing.Size(40, 40);
             this.PlayButtonPulse.TabIndex = 16;
             this.PlayButtonPulse.TabStop = false;
             this.PlayButtonPulse.Visible = false;
-            this.PlayButtonPulse.Click += new System.EventHandler(this.Playbutton_Click);
-            this.PlayButtonPulse.MouseLeave += new System.EventHandler(this.PlayButtonPulse_MouseLeave);
             // 
             // Player
             // 

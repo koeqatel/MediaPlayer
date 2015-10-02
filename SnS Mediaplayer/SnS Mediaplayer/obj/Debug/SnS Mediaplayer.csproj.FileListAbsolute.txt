@@ -67,3 +67,9 @@ C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplaye
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csproj.ResolveComReference.cache
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.exe
 C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.pdb
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\bin\Debug\SnS Mediaplayer.exe
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\bin\Debug\SnS Mediaplayer.pdb
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csprojResolveAssemblyReference.cache
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Player.resources
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS_Mediaplayer.Properties.Resources.resources
+C:\Users\Sander\Documents\Visual Studio 2015\Together\MediaPlayer\SnS Mediaplayer\SnS Mediaplayer\obj\Debug\SnS Mediaplayer.csproj.GenerateResource.Cache
