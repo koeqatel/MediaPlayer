@@ -41,16 +41,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LBSeconds = new System.Windows.Forms.Label();
             this.LBMinutes = new System.Windows.Forms.Label();
-            this.PauseButtonPulse = new System.Windows.Forms.PictureBox();
-            this.StopButtonPulse = new System.Windows.Forms.PictureBox();
-            this.PlayButtonPulse = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PauseButtonPulse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StopButtonPulse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayButtonPulse)).BeginInit();
             this.SuspendLayout();
             // 
             // InfoList
@@ -169,45 +163,11 @@
             this.LBMinutes.Text = "0";
             this.LBMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PauseButtonPulse
-            // 
-            this.PauseButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("PauseButtonPulse.Image")));
-            this.PauseButtonPulse.Location = new System.Drawing.Point(50, 106);
-            this.PauseButtonPulse.Name = "PauseButtonPulse";
-            this.PauseButtonPulse.Size = new System.Drawing.Size(40, 40);
-            this.PauseButtonPulse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PauseButtonPulse.TabIndex = 14;
-            this.PauseButtonPulse.TabStop = false;
-            this.PauseButtonPulse.Visible = false;
-            // 
-            // StopButtonPulse
-            // 
-            this.StopButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("StopButtonPulse.Image")));
-            this.StopButtonPulse.Location = new System.Drawing.Point(4, 106);
-            this.StopButtonPulse.Name = "StopButtonPulse";
-            this.StopButtonPulse.Size = new System.Drawing.Size(40, 40);
-            this.StopButtonPulse.TabIndex = 15;
-            this.StopButtonPulse.TabStop = false;
-            this.StopButtonPulse.Visible = false;
-            // 
-            // PlayButtonPulse
-            // 
-            this.PlayButtonPulse.Image = ((System.Drawing.Image)(resources.GetObject("PlayButtonPulse.Image")));
-            this.PlayButtonPulse.Location = new System.Drawing.Point(96, 106);
-            this.PlayButtonPulse.Name = "PlayButtonPulse";
-            this.PlayButtonPulse.Size = new System.Drawing.Size(40, 40);
-            this.PlayButtonPulse.TabIndex = 16;
-            this.PlayButtonPulse.TabStop = false;
-            this.PlayButtonPulse.Visible = false;
-            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 334);
-            this.Controls.Add(this.PlayButtonPulse);
-            this.Controls.Add(this.StopButtonPulse);
-            this.Controls.Add(this.PauseButtonPulse);
             this.Controls.Add(this.LBMinutes);
             this.Controls.Add(this.LBSeconds);
             this.Controls.Add(this.label1);
@@ -226,9 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PauseButtonPulse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StopButtonPulse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayButtonPulse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,9 +204,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label LBSeconds;
         private System.Windows.Forms.Label LBMinutes;
-        private System.Windows.Forms.PictureBox PauseButtonPulse;
-        private System.Windows.Forms.PictureBox StopButtonPulse;
-        private System.Windows.Forms.PictureBox PlayButtonPulse;
     }
 }
 

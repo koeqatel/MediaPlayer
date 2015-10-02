@@ -72,32 +72,32 @@ namespace SnS_Mediaplayer
 
         private void PlayButton_MouseEnter(object sender, EventArgs e)
         {
-            PlayButton.Image = Image.FromFile("..\\Textures\\Play Pulse.gif");
+            PlayButton.Image = Image.FromFile("Textures\\Play Pulse.gif");
         }
 
         private void PlayButton_MouseLeave(object sender, EventArgs e)
         {
-
+            PlayButton.Image = Image.FromFile("Textures\\Play.png");
         }
 
         private void StopButton_MouseEnter(object sender, EventArgs e)
         {
-
+            StopButton.Image = Image.FromFile("Textures\\Stop Pulse.gif");
         }
 
         private void StopButton_MouseLeave(object sender, EventArgs e)
         {
-
-        }
-
-        private void PauseButton_MouseLeave(object sender, EventArgs e)
-        {
-
+            StopButton.Image = Image.FromFile("Textures\\Stop.png");
         }
 
         private void PauseButton_MouseEnter(object sender, EventArgs e)
         {
+            PauseButton.Image = Image.FromFile("Textures\\Pause Pulse.gif");
+        }
 
+        private void PauseButton_MouseLeave(object sender, EventArgs e)
+        {
+            PauseButton.Image = Image.FromFile("Textures\\Pause.png");
         }
     }
 }
