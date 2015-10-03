@@ -105,7 +105,6 @@
             this.TrackList.Name = "TrackList";
             this.TrackList.Size = new System.Drawing.Size(331, 189);
             this.TrackList.TabIndex = 8;
-            this.TrackList.DragDrop += new System.Windows.Forms.DragEventHandler(this.TrackList_DragDrop);
             // 
             // StopButton
             // 

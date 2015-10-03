@@ -16,6 +16,7 @@ namespace SnS_Mediaplayer
     {
         // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
         string DisplayName;
+        public bool Debug = false;
 
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
@@ -25,67 +26,65 @@ namespace SnS_Mediaplayer
             InitializeComponent();
         }
 
+        #region Play Button
         private void Playbutton_Click(object sender, EventArgs e)
         {
             wplayer.URL = FileDialog.FolderPath + TrackList.SelectedText;
             wplayer.controls.play();
             label1.Text = "Now playing: " + "Null";
         }
-
-        private void PauseButton_Click(object sender, EventArgs e)
-        {
-            wplayer.controls.pause();
-        }
-
-        private void StopButton_Click(object sender, EventArgs e)
-        {
-            wplayer.controls.stop();
-        }
-        
-        private void FileButton_Click(object sender, EventArgs e)
-        {
-            FileDialog Test = new FileDialog();
-            Test.Show();
-        }
-
-        private void TrackList_DragDrop(object sender, DragEventArgs e)
-        {
-            TrackList.Items.Add(sender);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            label1.Text = wplayer.status;
-        }
-
         private void PlayButton_MouseEnter(object sender, EventArgs e)
         {
             PlayButton.Image = Image.FromFile("Textures\\Play Pulse.gif");
         }
-
         private void PlayButton_MouseLeave(object sender, EventArgs e)
         {
             PlayButton.Image = Image.FromFile("Textures\\Play.png");
         }
+        #endregion
 
-        private void StopButton_MouseEnter(object sender, EventArgs e)
+        #region Pause Button
+        private void PauseButton_Click(object sender, EventArgs e)
         {
-            StopButton.Image = Image.FromFile("Textures\\Stop Pulse.gif");
+            wplayer.controls.pause();
         }
-
-        private void StopButton_MouseLeave(object sender, EventArgs e)
-        {
-            StopButton.Image = Image.FromFile("Textures\\Stop.png");
-        }
-
         private void PauseButton_MouseEnter(object sender, EventArgs e)
         {
             PauseButton.Image = Image.FromFile("Textures\\Pause Pulse.gif");
         }
-
         private void PauseButton_MouseLeave(object sender, EventArgs e)
         {
             PauseButton.Image = Image.FromFile("Textures\\Pause.png");
+        }
+        #endregion
+
+        #region Stop Button
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.stop();
+        }
+        private void StopButton_MouseEnter(object sender, EventArgs e)
+        {
+            StopButton.Image = Image.FromFile("Textures\\Stop Pulse.gif");
+        }
+        private void StopButton_MouseLeave(object sender, EventArgs e)
+        {
+            StopButton.Image = Image.FromFile("Textures\\Stop.png");
+        }
+        #endregion
+
+        private void FileButton_Click(object sender, EventArgs e)
+        {
+            FileDialog fileDialog = new FileDialog();
+            fileDialog.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Debug == true)
+            {
+                label1.Text = wplayer.status;
+            }
         }
     }
 }

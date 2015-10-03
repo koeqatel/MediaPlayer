@@ -25,16 +25,6 @@ namespace SnS_Mediaplayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //
-                // The user selected a folder and pressed the OK button.
-                // We print the number of files found.
-                //
-                string[] files = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath);
-                MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
-            }
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 FolderPath = folderBrowserDialog1.SelectedPath;
@@ -42,7 +32,7 @@ namespace SnS_Mediaplayer
                 string[] Files = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath);
                 foreach (var File in Files)
                 {
-                    FilesInFolder.Items.Add(File);
+                    FilesInFolder.Items.Add(File.Replace(FolderPath + "\\", ""));
                 }
             }
         }
