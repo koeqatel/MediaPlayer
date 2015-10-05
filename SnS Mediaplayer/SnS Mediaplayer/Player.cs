@@ -16,7 +16,7 @@ namespace SnS_Mediaplayer
     {
         // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
         string DisplayName;
-        public bool Debug = false;
+        public bool Debug = true;
 
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
@@ -29,9 +29,8 @@ namespace SnS_Mediaplayer
         #region Play Button
         private void Playbutton_Click(object sender, EventArgs e)
         {
-            wplayer.URL = FileDialog.FolderPath + TrackList.SelectedText;
+            wplayer.URL = TrackList.SelectedText;
             wplayer.controls.play();
-            label1.Text = "Now playing: " + "Null";
         }
         private void PlayButton_MouseEnter(object sender, EventArgs e)
         {
@@ -75,8 +74,17 @@ namespace SnS_Mediaplayer
 
         private void FileButton_Click(object sender, EventArgs e)
         {
-            FileDialog fileDialog = new FileDialog();
-            fileDialog.Show();
+            OpenFileDialog Dialog = new OpenFileDialog();
+            Dialog.Multiselect = true;
+
+            if (Dialog.ShowDialog() == DialogResult.OK)
+            {
+                string[] Files = Dialog.FileNames;
+                foreach (var File in Files)
+                {
+                    TrackList.Items.Add(File);
+                }
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
