@@ -142,12 +142,12 @@
             // PauseTimer
             // 
             this.PauseTimer.Interval = 1;
-            this.PlayTimer.Tick += new System.EventHandler(this.PauseTimer_Tick);
+            this.PauseTimer.Tick += new System.EventHandler(this.PauseTimer_Tick);
             // 
             // StopTimer
             // 
             this.StopTimer.Interval = 1;
-            this.PlayTimer.Tick += new System.EventHandler(this.StopTimer_Tick);
+            this.StopTimer.Tick += new System.EventHandler(this.StopTimer_Tick);
             // 
             // TrackList
             // 
@@ -165,6 +165,7 @@
             this.DebugLabel1.Size = new System.Drawing.Size(45, 13);
             this.DebugLabel1.TabIndex = 12;
             this.DebugLabel1.Text = "Debug1";
+            this.DebugLabel1.Visible = false;
             // 
             // DebugLabel2
             // 
@@ -174,6 +175,7 @@
             this.DebugLabel2.Size = new System.Drawing.Size(45, 13);
             this.DebugLabel2.TabIndex = 13;
             this.DebugLabel2.Text = "Debug2";
+            this.DebugLabel2.Visible = false;
             // 
             // Player
             // 

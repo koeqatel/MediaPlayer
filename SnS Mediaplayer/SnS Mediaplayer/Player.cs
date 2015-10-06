@@ -16,7 +16,7 @@ namespace SnS_Mediaplayer
     {
         // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
         string DisplayName;
-        public bool Debug = true;
+        public bool Debug = false;
 
         int PlayTimerInt;
         int PauseTimerInt;
@@ -59,43 +59,57 @@ namespace SnS_Mediaplayer
         }
         private void PlayButton_MouseEnter(object sender, EventArgs e)
         {
-            PlayButton.Image = Image.FromFile("Textures\\Play Pulse.gif");
+            if (PlayTimerInt > 150 || PlayTimerInt < 1)
+                PlayButton.Image = Image.FromFile("Textures\\Play Pulse.gif");
         }
         private void PlayButton_MouseLeave(object sender, EventArgs e)
         {
-            PlayButton.Image = Image.FromFile("Textures\\Play.png");
+            if (PlayTimerInt > 150 || PlayTimerInt < 1)
+                PlayButton.Image = Image.FromFile("Textures\\Play.png");
         }
         #endregion
 
         #region Pause Button
         private void PauseButton_Click(object sender, EventArgs e)
         {
-            PauseButton.Image = Image.FromFile("Textures\\Pause Click.gif");
-            wplayer.controls.pause();
+            if (TrackList.SelectedItem != null)
+            {
+                PauseTimer.Start();
+                PauseButton.Image = Image.FromFile("Textures\\Pause Click.gif");
+                wplayer.controls.pause();
+            }
         }
         private void PauseButton_MouseEnter(object sender, EventArgs e)
         {
-            PauseButton.Image = Image.FromFile("Textures\\Pause Pulse.gif");
+            if (PauseTimerInt > 150 || PauseTimerInt < 1)
+                PauseButton.Image = Image.FromFile("Textures\\Pause Pulse.gif");
         }
         private void PauseButton_MouseLeave(object sender, EventArgs e)
         {
-            PauseButton.Image = Image.FromFile("Textures\\Pause.png");
+            if (PauseTimerInt > 150 || PauseTimerInt < 1)
+                PauseButton.Image = Image.FromFile("Textures\\Pause.png");
         }
         #endregion
 
         #region Stop Button
         private void StopButton_Click(object sender, EventArgs e)
         {
-            StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
-            wplayer.controls.stop();
+            if (TrackList.SelectedItem != null)
+            {
+                StopTimer.Start();
+                StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
+                wplayer.controls.stop();
+            }
         }
         private void StopButton_MouseEnter(object sender, EventArgs e)
         {
-            StopButton.Image = Image.FromFile("Textures\\Stop Pulse.gif");
+            if (StopTimerInt > 150 || StopTimerInt < 1)
+                StopButton.Image = Image.FromFile("Textures\\Stop Pulse.gif");
         }
         private void StopButton_MouseLeave(object sender, EventArgs e)
         {
-            StopButton.Image = Image.FromFile("Textures\\Stop.png");
+            if (StopTimerInt > 150 || StopTimerInt < 1)
+                StopButton.Image = Image.FromFile("Textures\\Stop.png");
         }
         #endregion
 
@@ -124,13 +138,12 @@ namespace SnS_Mediaplayer
         private void PlayTimer_Tick(object sender, EventArgs e)
         {
             PlayTimerInt = PlayTimerInt + 1;
-            DebugLabel1.Text = PlayTimerInt.ToString();
             if (PlayTimerInt == 1)
             {
                 PlayButton.Image = Image.FromFile("Textures\\Play Click.gif");
             }
 
-            if (PlayTimerInt > 125)
+            if (PlayTimerInt > 150)
             {
                 PlayTimer.Stop();
                 PlayTimerInt = 0;
@@ -140,10 +153,32 @@ namespace SnS_Mediaplayer
         private void PauseTimer_Tick(object sender, EventArgs e)
         {
             PauseTimerInt = PauseTimerInt + 1;
+            if (PauseTimerInt == 1)
+            {
+                PauseButton.Image = Image.FromFile("Textures\\Pause Click.gif");
+            }
+
+            if (PauseTimerInt > 150)
+            {
+                PauseTimer.Stop();
+                PauseTimerInt = 0;
+                PauseButton.Image = Image.FromFile("Textures\\Pause.png");
+            }
         }
         private void StopTimer_Tick(object sender, EventArgs e)
         {
             StopTimerInt = StopTimerInt + 1;
+            if (StopTimerInt == 1)
+            {
+                StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
+            }
+
+            if (StopTimerInt > 150)
+            {
+                StopTimer.Stop();
+                StopTimerInt = 0;
+                StopButton.Image = Image.FromFile("Textures\\Stop.png");
+            }
         }
         #endregion
     }
