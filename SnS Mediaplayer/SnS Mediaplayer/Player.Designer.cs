@@ -36,15 +36,16 @@
             this.PauseButton = new System.Windows.Forms.PictureBox();
             this.TrackList = new System.Windows.Forms.ComboBox();
             this.StopButton = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.HideSelect = new System.Windows.Forms.PictureBox();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LBSeconds = new System.Windows.Forms.Label();
             this.LBMinutes = new System.Windows.Forms.Label();
+            this.Random = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HideSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // InfoList
@@ -120,23 +121,24 @@
             this.StopButton.MouseEnter += new System.EventHandler(this.StopButton_MouseEnter);
             this.StopButton.MouseLeave += new System.EventHandler(this.StopButton_MouseLeave);
             // 
-            // pictureBox1
+            // HideSelect
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(335, 105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(331, 21);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.HideSelect.BackColor = System.Drawing.SystemColors.Control;
+            this.HideSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.HideSelect.Location = new System.Drawing.Point(335, 132);
+            this.HideSelect.Name = "HideSelect";
+            this.HideSelect.Size = new System.Drawing.Size(331, 21);
+            this.HideSelect.TabIndex = 10;
+            this.HideSelect.TabStop = false;
             // 
-            // label1
+            // StatusLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 11;
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Location = new System.Drawing.Point(93, 9);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(80, 13);
+            this.StatusLabel.TabIndex = 11;
+            this.StatusLabel.Text = "No file selected";
             // 
             // timer1
             // 
@@ -162,15 +164,27 @@
             this.LBMinutes.Text = "0";
             this.LBMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Random
+            // 
+            this.Random.AutoSize = true;
+            this.Random.Location = new System.Drawing.Point(607, 109);
+            this.Random.Name = "Random";
+            this.Random.Size = new System.Drawing.Size(59, 17);
+            this.Random.TabIndex = 14;
+            this.Random.Text = "Shuffle";
+            this.Random.UseVisualStyleBackColor = true;
+            this.Random.CheckStateChanged += new System.EventHandler(this.Random_CheckStateChanged);
+            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 334);
+            this.Controls.Add(this.Random);
             this.Controls.Add(this.LBMinutes);
             this.Controls.Add(this.LBSeconds);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.StatusLabel);
+            this.Controls.Add(this.HideSelect);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.TrackList);
             this.Controls.Add(this.PauseButton);
@@ -184,7 +198,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HideSelect)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,11 +212,12 @@
         private System.Windows.Forms.PictureBox PauseButton;
         private System.Windows.Forms.ComboBox TrackList;
         private System.Windows.Forms.PictureBox StopButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox HideSelect;
+        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label LBSeconds;
         private System.Windows.Forms.Label LBMinutes;
+        private System.Windows.Forms.CheckBox Random;
     }
 }
 

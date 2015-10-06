@@ -24,11 +24,27 @@ namespace SnS_Mediaplayer
         {
             //How should i know it's not my job...
             InitializeComponent();
+            if (Debug == true)
+            {
+                HideSelect.Visible = false;
+                StatusLabel.Visible = true;
+            }
+        }
+
+        public void Shuffle()
+        {
+            if (Random.Checked == true)
+            {
+                Random rnd = new Random();
+                if (TrackList.Items.Count != 0)
+                    TrackList.SelectedIndex = rnd.Next(0, TrackList.Items.Count);
+            }
         }
 
         #region Play Button
         private void Playbutton_Click(object sender, EventArgs e)
         {
+            Shuffle();
             wplayer.URL = TrackList.SelectedText;
             wplayer.controls.play();
         }
@@ -89,10 +105,17 @@ namespace SnS_Mediaplayer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Debug == true)
-            {
-                label1.Text = wplayer.status;
-            }
+            if (wplayer.status != "")
+            StatusLabel.Text = wplayer.status;
+        }
+
+        private void Random_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Random_CheckStateChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
