@@ -34,26 +34,27 @@
             this.PlayButton = new System.Windows.Forms.PictureBox();
             this.FileButton = new System.Windows.Forms.Button();
             this.PauseButton = new System.Windows.Forms.PictureBox();
-            this.TrackList = new System.Windows.Forms.ComboBox();
             this.StopButton = new System.Windows.Forms.PictureBox();
-            this.HideSelect = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.LBSeconds = new System.Windows.Forms.Label();
-            this.LBMinutes = new System.Windows.Forms.Label();
             this.Random = new System.Windows.Forms.CheckBox();
+            this.PlayTimer = new System.Windows.Forms.Timer(this.components);
+            this.PauseTimer = new System.Windows.Forms.Timer(this.components);
+            this.StopTimer = new System.Windows.Forms.Timer(this.components);
+            this.TrackList = new System.Windows.Forms.ListBox();
+            this.DebugLabel1 = new System.Windows.Forms.Label();
+            this.DebugLabel2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HideSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // InfoList
             // 
-            this.InfoList.Location = new System.Drawing.Point(12, 152);
+            this.InfoList.Location = new System.Drawing.Point(12, 149);
             this.InfoList.Name = "InfoList";
             this.InfoList.ReadOnly = true;
-            this.InfoList.Size = new System.Drawing.Size(317, 170);
+            this.InfoList.Size = new System.Drawing.Size(317, 173);
             this.InfoList.TabIndex = 0;
             this.InfoList.Text = "";
             // 
@@ -75,7 +76,7 @@
             this.FileButton.Location = new System.Drawing.Point(12, 12);
             this.FileButton.Name = "FileButton";
             this.FileButton.Size = new System.Drawing.Size(75, 23);
-            this.FileButton.TabIndex = 4;
+            this.FileButton.TabIndex = 1;
             this.FileButton.Text = "Choose file";
             this.FileButton.UseVisualStyleBackColor = true;
             this.FileButton.Click += new System.EventHandler(this.FileButton_Click);
@@ -95,18 +96,6 @@
             this.PauseButton.MouseEnter += new System.EventHandler(this.PauseButton_MouseEnter);
             this.PauseButton.MouseLeave += new System.EventHandler(this.PauseButton_MouseLeave);
             // 
-            // TrackList
-            // 
-            this.TrackList.AllowDrop = true;
-            this.TrackList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.TrackList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.TrackList.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.TrackList.FormattingEnabled = true;
-            this.TrackList.Location = new System.Drawing.Point(335, 132);
-            this.TrackList.Name = "TrackList";
-            this.TrackList.Size = new System.Drawing.Size(331, 189);
-            this.TrackList.TabIndex = 8;
-            // 
             // StopButton
             // 
             this.StopButton.BackColor = System.Drawing.SystemColors.Control;
@@ -121,20 +110,10 @@
             this.StopButton.MouseEnter += new System.EventHandler(this.StopButton_MouseEnter);
             this.StopButton.MouseLeave += new System.EventHandler(this.StopButton_MouseLeave);
             // 
-            // HideSelect
-            // 
-            this.HideSelect.BackColor = System.Drawing.SystemColors.Control;
-            this.HideSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.HideSelect.Location = new System.Drawing.Point(335, 132);
-            this.HideSelect.Name = "HideSelect";
-            this.HideSelect.Size = new System.Drawing.Size(331, 21);
-            this.HideSelect.TabIndex = 10;
-            this.HideSelect.TabStop = false;
-            // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(93, 9);
+            this.StatusLabel.Location = new System.Drawing.Point(93, 17);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(80, 13);
             this.StatusLabel.TabIndex = 11;
@@ -145,48 +124,68 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // LBSeconds
-            // 
-            this.LBSeconds.AutoSize = true;
-            this.LBSeconds.Location = new System.Drawing.Point(490, 17);
-            this.LBSeconds.Name = "LBSeconds";
-            this.LBSeconds.Size = new System.Drawing.Size(13, 13);
-            this.LBSeconds.TabIndex = 12;
-            this.LBSeconds.Text = "0";
-            // 
-            // LBMinutes
-            // 
-            this.LBMinutes.AutoSize = true;
-            this.LBMinutes.Location = new System.Drawing.Point(474, 17);
-            this.LBMinutes.Name = "LBMinutes";
-            this.LBMinutes.Size = new System.Drawing.Size(13, 13);
-            this.LBMinutes.TabIndex = 13;
-            this.LBMinutes.Text = "0";
-            this.LBMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Random
             // 
             this.Random.AutoSize = true;
-            this.Random.Location = new System.Drawing.Point(607, 109);
+            this.Random.Location = new System.Drawing.Point(607, 126);
             this.Random.Name = "Random";
             this.Random.Size = new System.Drawing.Size(59, 17);
-            this.Random.TabIndex = 14;
+            this.Random.TabIndex = 3;
             this.Random.Text = "Shuffle";
             this.Random.UseVisualStyleBackColor = true;
-            this.Random.CheckStateChanged += new System.EventHandler(this.Random_CheckStateChanged);
+            // 
+            // PlayTimer
+            // 
+            this.PlayTimer.Interval = 1;
+            this.PlayTimer.Tick += new System.EventHandler(this.PlayTimer_Tick);
+            // 
+            // PauseTimer
+            // 
+            this.PauseTimer.Interval = 1;
+            this.PlayTimer.Tick += new System.EventHandler(this.PauseTimer_Tick);
+            // 
+            // StopTimer
+            // 
+            this.StopTimer.Interval = 1;
+            this.PlayTimer.Tick += new System.EventHandler(this.StopTimer_Tick);
+            // 
+            // TrackList
+            // 
+            this.TrackList.FormattingEnabled = true;
+            this.TrackList.Location = new System.Drawing.Point(335, 149);
+            this.TrackList.Name = "TrackList";
+            this.TrackList.Size = new System.Drawing.Size(331, 173);
+            this.TrackList.TabIndex = 2;
+            // 
+            // DebugLabel1
+            // 
+            this.DebugLabel1.AutoSize = true;
+            this.DebugLabel1.Location = new System.Drawing.Point(12, 38);
+            this.DebugLabel1.Name = "DebugLabel1";
+            this.DebugLabel1.Size = new System.Drawing.Size(45, 13);
+            this.DebugLabel1.TabIndex = 12;
+            this.DebugLabel1.Text = "Debug1";
+            // 
+            // DebugLabel2
+            // 
+            this.DebugLabel2.AutoSize = true;
+            this.DebugLabel2.Location = new System.Drawing.Point(12, 51);
+            this.DebugLabel2.Name = "DebugLabel2";
+            this.DebugLabel2.Size = new System.Drawing.Size(45, 13);
+            this.DebugLabel2.TabIndex = 13;
+            this.DebugLabel2.Text = "Debug2";
             // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 334);
-            this.Controls.Add(this.Random);
-            this.Controls.Add(this.LBMinutes);
-            this.Controls.Add(this.LBSeconds);
-            this.Controls.Add(this.StatusLabel);
-            this.Controls.Add(this.HideSelect);
-            this.Controls.Add(this.StopButton);
+            this.Controls.Add(this.DebugLabel2);
+            this.Controls.Add(this.DebugLabel1);
             this.Controls.Add(this.TrackList);
+            this.Controls.Add(this.Random);
+            this.Controls.Add(this.StatusLabel);
+            this.Controls.Add(this.StopButton);
             this.Controls.Add(this.PauseButton);
             this.Controls.Add(this.FileButton);
             this.Controls.Add(this.PlayButton);
@@ -198,7 +197,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PauseButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StopButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HideSelect)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,14 +208,16 @@
         private System.Windows.Forms.PictureBox PlayButton;
         private System.Windows.Forms.Button FileButton;
         private System.Windows.Forms.PictureBox PauseButton;
-        private System.Windows.Forms.ComboBox TrackList;
         private System.Windows.Forms.PictureBox StopButton;
-        private System.Windows.Forms.PictureBox HideSelect;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label LBSeconds;
-        private System.Windows.Forms.Label LBMinutes;
         private System.Windows.Forms.CheckBox Random;
+        private System.Windows.Forms.Timer PlayTimer;
+        private System.Windows.Forms.Timer PauseTimer;
+        private System.Windows.Forms.Timer StopTimer;
+        private System.Windows.Forms.ListBox TrackList;
+        private System.Windows.Forms.Label DebugLabel1;
+        private System.Windows.Forms.Label DebugLabel2;
     }
 }
 

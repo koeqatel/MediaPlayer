@@ -18,6 +18,11 @@ namespace SnS_Mediaplayer
         string DisplayName;
         public bool Debug = true;
 
+        int PlayTimerInt;
+        int PauseTimerInt;
+        int StopTimerInt;
+
+
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
         public Player()
@@ -26,8 +31,8 @@ namespace SnS_Mediaplayer
             InitializeComponent();
             if (Debug == true)
             {
-                HideSelect.Visible = false;
-                StatusLabel.Visible = true;
+                DebugLabel1.Visible = true;
+                DebugLabel2.Visible = true;
             }
         }
 
@@ -44,9 +49,13 @@ namespace SnS_Mediaplayer
         #region Play Button
         private void Playbutton_Click(object sender, EventArgs e)
         {
-            Shuffle();
-            wplayer.URL = TrackList.SelectedText;
-            wplayer.controls.play();
+            if (TrackList.SelectedItem != null)
+            {
+                PlayTimer.Start();
+                wplayer.URL = TrackList.SelectedItem.ToString();
+                wplayer.controls.play();
+                Shuffle();
+            }
         }
         private void PlayButton_MouseEnter(object sender, EventArgs e)
         {
@@ -61,6 +70,7 @@ namespace SnS_Mediaplayer
         #region Pause Button
         private void PauseButton_Click(object sender, EventArgs e)
         {
+            PauseButton.Image = Image.FromFile("Textures\\Pause Click.gif");
             wplayer.controls.pause();
         }
         private void PauseButton_MouseEnter(object sender, EventArgs e)
@@ -76,6 +86,7 @@ namespace SnS_Mediaplayer
         #region Stop Button
         private void StopButton_Click(object sender, EventArgs e)
         {
+            StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
             wplayer.controls.stop();
         }
         private void StopButton_MouseEnter(object sender, EventArgs e)
@@ -106,16 +117,34 @@ namespace SnS_Mediaplayer
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (wplayer.status != "")
-            StatusLabel.Text = wplayer.status;
+                StatusLabel.Text = wplayer.status;
         }
 
-        private void Random_Click(object sender, EventArgs e)
+        #region Timers
+        private void PlayTimer_Tick(object sender, EventArgs e)
         {
-        }
+            PlayTimerInt = PlayTimerInt + 1;
+            DebugLabel1.Text = PlayTimerInt.ToString();
+            if (PlayTimerInt == 1)
+            {
+                PlayButton.Image = Image.FromFile("Textures\\Play Click.gif");
+            }
 
-        private void Random_CheckStateChanged(object sender, EventArgs e)
-        {
-           
+            if (PlayTimerInt > 125)
+            {
+                PlayTimer.Stop();
+                PlayTimerInt = 0;
+                PlayButton.Image = Image.FromFile("Textures\\Play.png");
+            }
         }
+        private void PauseTimer_Tick(object sender, EventArgs e)
+        {
+            PauseTimerInt = PauseTimerInt + 1;
+        }
+        private void StopTimer_Tick(object sender, EventArgs e)
+        {
+            StopTimerInt = StopTimerInt + 1;
+        }
+        #endregion
     }
 }
