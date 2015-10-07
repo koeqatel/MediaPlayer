@@ -15,14 +15,16 @@ namespace SnS_Mediaplayer
     public partial class Player : Form
     {
         // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
-        string DisplayName;
+        static string[] WorkingName = new string[100];
         public bool Debug = false;
 
+        #region Time integers
         int PlayTimerInt;
         int PauseTimerInt;
         int StopTimerInt;
+        #endregion
 
-
+        OpenFileDialog Dialog = new OpenFileDialog();
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
 
         public Player()
@@ -40,9 +42,28 @@ namespace SnS_Mediaplayer
         {
             if (Random.Checked == true)
             {
-                Random rnd = new Random();
+                Random rnd = new Random(Convert.ToInt32(DateTime.Now.Ticks.ToString().Substring(0, 6)));
                 if (TrackList.Items.Count != 0)
-                    TrackList.SelectedIndex = rnd.Next(0, TrackList.Items.Count);
+                {
+                    Track
+                }
+            }
+        }
+
+        public void InfoListAdd()
+        {
+            try
+            {
+                wplayer.URL = WorkingName[TrackList.SelectedIndex].ToString();
+                InfoList.Text = "Name: " + Dialog.SafeFileNames[TrackList.SelectedIndex];
+                InfoList.Text = InfoList.Text + "\nFile size: " + "Work in progress";
+                InfoList.Text = InfoList.Text + "\nAlbum Name: " + "Work in progress";
+                InfoList.Text = InfoList.Text + "\nAlbum Artist: " + "Once again, work in progress";
+                InfoList.Text = InfoList.Text + "\nTrack Length: " + wplayer.currentMedia.duration;
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -51,8 +72,8 @@ namespace SnS_Mediaplayer
         {
             if (TrackList.SelectedItem != null)
             {
+                InfoListAdd();
                 PlayTimer.Start();
-                wplayer.URL = TrackList.SelectedItem.ToString();
                 wplayer.controls.play();
                 Shuffle();
             }
@@ -115,15 +136,17 @@ namespace SnS_Mediaplayer
 
         private void FileButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog Dialog = new OpenFileDialog();
+            int i = 0;
             Dialog.Multiselect = true;
-
             if (Dialog.ShowDialog() == DialogResult.OK)
             {
                 string[] Files = Dialog.FileNames;
-                foreach (var File in Files)
+                foreach (string File in Files)
                 {
-                    TrackList.Items.Add(File);
+                    TrackList.Items.Add(Dialog.SafeFileNames[i]);
+                    WorkingName[i] = File;
+                    Console.WriteLine(WorkingName[i].ToString());
+                    i = i + 1;
                 }
             }
         }
@@ -143,7 +166,7 @@ namespace SnS_Mediaplayer
                 PlayButton.Image = Image.FromFile("Textures\\Play Click.gif");
             }
 
-            if (PlayTimerInt > 150)
+            if (PlayTimerInt > 140)
             {
                 PlayTimer.Stop();
                 PlayTimerInt = 0;
@@ -158,7 +181,7 @@ namespace SnS_Mediaplayer
                 PauseButton.Image = Image.FromFile("Textures\\Pause Click.gif");
             }
 
-            if (PauseTimerInt > 150)
+            if (PauseTimerInt > 140)
             {
                 PauseTimer.Stop();
                 PauseTimerInt = 0;
@@ -173,7 +196,7 @@ namespace SnS_Mediaplayer
                 StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
             }
 
-            if (StopTimerInt > 150)
+            if (StopTimerInt > 140)
             {
                 StopTimer.Stop();
                 StopTimerInt = 0;
@@ -181,5 +204,10 @@ namespace SnS_Mediaplayer
             }
         }
         #endregion
+
+        private void TrackList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InfoListAdd();
+        }
     }
 }

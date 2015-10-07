@@ -156,6 +156,7 @@
             this.TrackList.Name = "TrackList";
             this.TrackList.Size = new System.Drawing.Size(331, 173);
             this.TrackList.TabIndex = 2;
+            this.TrackList.SelectedIndexChanged += new System.EventHandler(this.TrackList_SelectedIndexChanged);
             // 
             // DebugLabel1
             // 
