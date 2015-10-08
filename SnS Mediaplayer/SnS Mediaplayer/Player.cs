@@ -14,9 +14,13 @@ namespace SnS_Mediaplayer
 {
     public partial class Player : Form
     {
-        // We moeten nog ff uitzoeken hoe we File en Folder van elkaar af halen.
         static string[] WorkingName = new string[100];
-        public bool Debug = false;
+        public bool Debug = true;
+        public bool ShouldPlay = false;
+
+        public static int seconds;
+        public static int minutes;
+        public static int hours;
 
         #region Time integers
         int PlayTimerInt;
@@ -38,15 +42,64 @@ namespace SnS_Mediaplayer
             }
         }
 
+        public string GetLength()
+        {
+            seconds = Convert.ToInt32(wplayer.currentMedia.duration);
+            while (seconds > 60)
+            {
+                seconds = seconds - 60;
+                minutes = minutes + 1;
+            }
+            while (minutes > 60)
+            {
+                minutes = minutes - 60;
+                hours = hours + 1;
+            }
+            return hours.ToString() + ":" + minutes.ToString() + ":" + seconds.ToString();
+        }
+
+        public void Next()
+        {
+            //            wplayer.currentMedia.duration;
+        }
+
+        public void Repeat()
+        {
+            if (ShouldPlay == true)
+            {
+                if (wplayer.status == "Gestopt")
+                {
+                    Console.WriteLine("Now its going to play the next song");
+                }
+            }
+        }
+
         public void Shuffle()
         {
             if (Random.Checked == true)
             {
                 Random rnd = new Random(Convert.ToInt32(DateTime.Now.Ticks.ToString().Substring(0, 6)));
-                if (TrackList.Items.Count != 0)
+                List<String> randomized = new List<string>();
+
+                int totalCount = 0;
+                while (totalCount != TrackList.Items.Count)
                 {
-                    Track
+                    int i = rnd.Next(0, TrackList.Items.Count);
+
+                    while (randomized.Contains(TrackList.Items[i]))
+                    {
+                        i = rnd.Next(0, TrackList.Items.Count);
+                    }
+
+                    if (!randomized.Contains(TrackList.Items[i]))
+                        randomized.Add(TrackList.Items[i].ToString());
+
+                    totalCount++;
                 }
+
+                TrackList.Items.Clear();
+                foreach (string s in randomized)
+                    TrackList.Items.Add(s);
             }
         }
 
@@ -54,16 +107,18 @@ namespace SnS_Mediaplayer
         {
             try
             {
-                wplayer.URL = WorkingName[TrackList.SelectedIndex].ToString();
                 InfoList.Text = "Name: " + Dialog.SafeFileNames[TrackList.SelectedIndex];
                 InfoList.Text = InfoList.Text + "\nFile size: " + "Work in progress";
                 InfoList.Text = InfoList.Text + "\nAlbum Name: " + "Work in progress";
                 InfoList.Text = InfoList.Text + "\nAlbum Artist: " + "Once again, work in progress";
-                InfoList.Text = InfoList.Text + "\nTrack Length: " + wplayer.currentMedia.duration;
+                InfoList.Text = InfoList.Text + "\nTrack Length: " + wplayer.currentMedia.durationString;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex);
+                Console.ResetColor();
+                Console.WriteLine("\n");
             }
         }
 
@@ -72,7 +127,7 @@ namespace SnS_Mediaplayer
         {
             if (TrackList.SelectedItem != null)
             {
-                InfoListAdd();
+                ShouldPlay = true;
                 PlayTimer.Start();
                 wplayer.controls.play();
                 Shuffle();
@@ -117,6 +172,7 @@ namespace SnS_Mediaplayer
         {
             if (TrackList.SelectedItem != null)
             {
+                ShouldPlay = false;
                 StopTimer.Start();
                 StopButton.Image = Image.FromFile("Textures\\Stop Click.gif");
                 wplayer.controls.stop();
@@ -155,6 +211,9 @@ namespace SnS_Mediaplayer
         {
             if (wplayer.status != "")
                 StatusLabel.Text = wplayer.status;
+            Repeat();
+            DebugLabel1.Text = TrackList.SelectedIndex.ToString();
+            
         }
 
         #region Timers
@@ -207,6 +266,9 @@ namespace SnS_Mediaplayer
 
         private void TrackList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            wplayer.URL = WorkingName[TrackList.SelectedIndex].ToString();
+            Console.WriteLine(wplayer.currentMedia.name);
+            Console.WriteLine(wplayer.currentMedia.durationString);
             InfoListAdd();
         }
     }
